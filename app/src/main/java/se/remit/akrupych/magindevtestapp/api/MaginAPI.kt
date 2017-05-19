@@ -1,4 +1,4 @@
-package se.remit.akrupych.magindevtestapp
+package se.remit.akrupych.magindevtestapp.api
 
 import io.reactivex.Observable
 import retrofit2.http.GET

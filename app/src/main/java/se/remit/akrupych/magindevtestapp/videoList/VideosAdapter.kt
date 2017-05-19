@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import se.remit.akrupych.magindevtestapp.R
 import se.remit.akrupych.magindevtestapp.model.Video
 
@@ -18,6 +19,7 @@ class VideosAdapter(val items: List<Video>, val context: Context) : RecyclerView
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val item = items[position]
+        Glide.with(context).load(item.imageThumb).placeholder(R.mipmap.ic_launcher).into(holder.image)
         holder.title.text = item.title
         holder.studio.text = item.studio
     }
