@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
                         },
                         { error ->
                             error.printStackTrace()
-                            errorSnackbar = Snackbar.make(contentView, "Loading failed", Snackbar.LENGTH_INDEFINITE)
-                            errorSnackbar.setAction("Retry", { requestVideos() })
+                            errorSnackbar = Snackbar.make(contentView, R.string.loading_failed, Snackbar.LENGTH_INDEFINITE)
+                            errorSnackbar.setAction(R.string.retry, { requestVideos() })
                             errorSnackbar.show()
                         }
                 )
