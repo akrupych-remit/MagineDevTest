@@ -2,6 +2,7 @@ package se.remit.akrupych.magindevtestapp
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -9,6 +10,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import se.remit.akrupych.magindevtestapp.model.CategoriesResponse
+import se.remit.akrupych.magindevtestapp.model.Video
+import se.remit.akrupych.magindevtestapp.videoList.VideosAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +28,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        videosList.layoutManager = LinearLayoutManager(this)
+        requestVideos()
+    }
+
+    private fun requestVideos() {
         maginApi.getCategories()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -31,11 +40,16 @@ class MainActivity : AppCompatActivity() {
                 .doFinally { loadingIndicator.visibility = View.GONE }
                 .subscribe(
                         { response ->
-                            responseTextView.text = response.toString()
+                            showVideos(response)
                         },
                         { error ->
                             error.printStackTrace()
                         }
                 )
+    }
+
+    private fun showVideos(response: CategoriesResponse) {
+        val allVideos: List<Video> = response.categories.flatMap { it.videos }
+        videosList.adapter = VideosAdapter(allVideos, this)
     }
 }

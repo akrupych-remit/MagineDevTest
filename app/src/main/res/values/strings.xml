@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MaginDevTestApp</string>
+    <string name="video_image">Video image</string>
 </resources>
