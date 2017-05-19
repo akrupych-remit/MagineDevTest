@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MaginDevTestApp</string>
     <string name="video_image">Video image</string>
+    <string name="loading_failed">Loading failed</string>
+    <string name="retry">Retry</string>
 </resources>
