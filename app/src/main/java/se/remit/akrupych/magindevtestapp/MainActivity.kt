@@ -1,6 +1,7 @@
 package se.remit.akrupych.magindevtestapp
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(MaginAPI::class.java)
 
+    private lateinit var errorSnackbar: Snackbar
+
     /**
      * Called when the screen is created to get the view and setup everything
      */
@@ -56,7 +59,10 @@ class MainActivity : AppCompatActivity() {
         maginApi.getCategories()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { loadingIndicator.visibility = View.VISIBLE }
+                .doOnSubscribe {
+                    errorSnackbar.dismiss()
+                    loadingIndicator.visibility = View.VISIBLE
+                }
                 .doFinally { loadingIndicator.visibility = View.GONE }
                 .subscribe(
                         { response ->
@@ -64,6 +70,9 @@ class MainActivity : AppCompatActivity() {
                         },
                         { error ->
                             error.printStackTrace()
+                            errorSnackbar = Snackbar.make(contentView, "Loading failed", Snackbar.LENGTH_INDEFINITE)
+                            errorSnackbar.setAction("Retry", { requestVideos() })
+                            errorSnackbar.show()
                         }
                 )
     }
@@ -75,4 +84,5 @@ class MainActivity : AppCompatActivity() {
         val allVideos: List<Video> = response.categories.flatMap { it.videos }
         videosList.adapter = VideosAdapter(allVideos, this)
     }
+
 }
