@@ -17,10 +17,15 @@ import se.remit.akrupych.magindevtestapp.model.CategoriesResponse
 import se.remit.akrupych.magindevtestapp.model.Video
 import se.remit.akrupych.magindevtestapp.videoList.VideosAdapter
 
+/**
+ * Main and the only screen of the app
+ */
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = MainActivity::class.java.simpleName
-
+    /**
+     * API object for accessing backend. Uses RxJava to get response and custom GSON adapter
+     * to adjust video image paths
+     */
     private val maginApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -34,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(MaginAPI::class.java)
 
+    /**
+     * Called when the screen is created to get the view and setup everything
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         requestVideos()
     }
 
+    /**
+     * Ask backend for all the videos and show them in list
+     */
     private fun requestVideos() {
         maginApi.getCategories()
                 .subscribeOn(Schedulers.io())
@@ -57,6 +68,9 @@ class MainActivity : AppCompatActivity() {
                 )
     }
 
+    /**
+     * Show loaded videos data on the screen
+     */
     private fun showVideos(response: CategoriesResponse) {
         val allVideos: List<Video> = response.categories.flatMap { it.videos }
         videosList.adapter = VideosAdapter(allVideos, this)

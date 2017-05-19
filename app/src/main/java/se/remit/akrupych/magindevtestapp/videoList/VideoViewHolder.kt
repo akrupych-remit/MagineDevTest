@@ -6,6 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import se.remit.akrupych.magindevtestapp.R
 
+/**
+ * Holds row views for quicker access
+ */
 class VideoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val image = view.findViewById(R.id.videoImage) as ImageView
     val title = view.findViewById(R.id.videoTitle) as TextView

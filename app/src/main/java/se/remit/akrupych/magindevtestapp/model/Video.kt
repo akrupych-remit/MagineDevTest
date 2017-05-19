@@ -2,6 +2,9 @@ package se.remit.akrupych.magindevtestapp.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Video info
+ */
 data class Video(
         var title: String?,
         var subtitle: String?,

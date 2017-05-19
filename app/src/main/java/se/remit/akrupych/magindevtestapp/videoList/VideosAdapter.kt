@@ -8,15 +8,27 @@ import com.bumptech.glide.Glide
 import se.remit.akrupych.magindevtestapp.R
 import se.remit.akrupych.magindevtestapp.model.Video
 
+/**
+ * Adapter for [RecyclerView] with videos
+ */
 class VideosAdapter(val items: List<Video>, val context: Context) : RecyclerView.Adapter<VideoViewHolder>() {
 
+    /**
+     * Returns list items count
+     */
     override fun getItemCount() = items.count()
 
+    /**
+     * Returns new [VideoViewHolder] with new row view
+     */
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): VideoViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false)
         return VideoViewHolder(view)
     }
 
+    /**
+     * Binds view to corresponding data item
+     */
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val item = items[position]
         Glide.with(context).load(item.imageThumb).placeholder(R.mipmap.ic_launcher).into(holder.image)
