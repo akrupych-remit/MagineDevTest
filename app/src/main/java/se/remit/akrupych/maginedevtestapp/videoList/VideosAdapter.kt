@@ -16,7 +16,7 @@ class VideosAdapter(val items: List<Video>, val context: Context) : RecyclerView
     /**
      * Returns list items count
      */
-    override fun getItemCount() = items.count()
+    override fun getItemCount() = items.size
 
     /**
      * Returns new [VideoViewHolder] with new row view
