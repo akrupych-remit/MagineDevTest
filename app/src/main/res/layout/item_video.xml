@@ -3,30 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/videoItemMargin"
     android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="@dimen/videoItemPadding">
 
         <ImageView
             android:id="@+id/videoImage"
-            android:layout_width="120dp"
-            android:layout_height="68dp"
+            android:layout_width="@dimen/videoItemImageWidth"
+            android:layout_height="@dimen/videoItemImageHeight"
             android:contentDescription="@string/video_image"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginEnd="@dimen/videoItemImageRightMargin"/>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingLeft="8dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/videoTitle"
@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:textColor="#666"
-                android:textSize="24sp"
+                android:textColor="@color/videoItemTextColor"
+                android:textSize="@dimen/videoItemTitleTextSize"
                 android:textStyle="bold"
                 tools:text="Title is too long to fit here" />
 
@@ -45,8 +45,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:textColor="#666"
-                android:textSize="18sp"
+                android:textColor="@color/videoItemTextColor"
+                android:textSize="@dimen/videoItemStudioTextSize"
                 tools:text="Studio is tooooo long to fit here" />
 
         </LinearLayout>

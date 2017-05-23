@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="videoItemMargin">8dp</dimen>
+    <dimen name="videoItemPadding">8dp</dimen>
+    <dimen name="videoItemImageWidth">120dp</dimen>
+    <dimen name="videoItemImageHeight">68dp</dimen>
+    <dimen name="videoItemImageRightMargin">8dp</dimen>
+    <dimen name="videoItemTitleTextSize">24sp</dimen>
+    <dimen name="videoItemStudioTextSize">18sp</dimen>
+</resources>
