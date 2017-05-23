@@ -19,9 +19,11 @@ class VideoDeserializer : JsonDeserializer<Video> {
      */
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): Video {
         val video = Gson().fromJson(json, Video::class.java)
-        video.imageLarge = Constants.BASE_URL + video.imageLarge
-        video.imageMedium = Constants.BASE_URL + video.imageMedium
-        video.imageThumb = Constants.BASE_URL + video.imageThumb
+        video.apply {
+            imageLarge = Constants.BASE_URL + imageLarge
+            imageMedium = Constants.BASE_URL + imageMedium
+            imageThumb = Constants.BASE_URL + imageThumb
+        }
         return video
     }
 
