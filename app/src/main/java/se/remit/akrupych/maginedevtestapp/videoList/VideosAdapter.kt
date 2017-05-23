@@ -1,12 +1,12 @@
-package se.remit.akrupych.magindevtestapp.videoList
+package se.remit.akrupych.maginedevtestapp.videoList
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import se.remit.akrupych.magindevtestapp.R
-import se.remit.akrupych.magindevtestapp.model.Video
+import se.remit.akrupych.maginedevtestapp.R
+import se.remit.akrupych.maginedevtestapp.model.Video
 
 /**
  * Adapter for [RecyclerView] with videos

@@ -1,11 +1,11 @@
-package se.remit.akrupych.magindevtestapp.api
+package se.remit.akrupych.maginedevtestapp.api
 
 import com.google.gson.Gson
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import se.remit.akrupych.magindevtestapp.Constants
-import se.remit.akrupych.magindevtestapp.model.Video
+import se.remit.akrupych.maginedevtestapp.Constants
+import se.remit.akrupych.maginedevtestapp.model.Video
 import java.lang.reflect.Type
 
 /**

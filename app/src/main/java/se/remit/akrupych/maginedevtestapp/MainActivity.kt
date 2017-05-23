@@ -1,4 +1,4 @@
-package se.remit.akrupych.magindevtestapp
+package se.remit.akrupych.maginedevtestapp
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -12,11 +12,11 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import se.remit.akrupych.magindevtestapp.api.MaginAPI
-import se.remit.akrupych.magindevtestapp.api.VideoDeserializer
-import se.remit.akrupych.magindevtestapp.model.CategoriesResponse
-import se.remit.akrupych.magindevtestapp.model.Video
-import se.remit.akrupych.magindevtestapp.videoList.VideosAdapter
+import se.remit.akrupych.maginedevtestapp.api.MagineAPI
+import se.remit.akrupych.maginedevtestapp.api.VideoDeserializer
+import se.remit.akrupych.maginedevtestapp.model.CategoriesResponse
+import se.remit.akrupych.maginedevtestapp.model.Video
+import se.remit.akrupych.maginedevtestapp.videoList.VideosAdapter
 
 /**
  * Main and the only screen of the app
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
      * API object for accessing backend. Uses RxJava to get response and custom GSON adapter
      * to adjust video image paths
      */
-    private val maginApi = Retrofit.Builder()
+    private val magineApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                     )
             )
             .build()
-            .create(MaginAPI::class.java)
+            .create(MagineAPI::class.java)
 
     private lateinit var errorSnackbar: Snackbar
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
      * Ask backend for all the videos and show them in list
      */
     private fun requestVideos() {
-        maginApi.getCategories()
+        magineApi.getCategories()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {

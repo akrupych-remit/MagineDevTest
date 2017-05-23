@@ -1,13 +1,13 @@
-package se.remit.akrupych.magindevtestapp.api
+package se.remit.akrupych.maginedevtestapp.api
 
 import io.reactivex.Observable
 import retrofit2.http.GET
-import se.remit.akrupych.magindevtestapp.model.CategoriesResponse
+import se.remit.akrupych.maginedevtestapp.model.CategoriesResponse
 
 /**
  * Retrofit service for our API
  */
-interface MaginAPI {
+interface MagineAPI {
 
     /**
      * Returns all the videos from backend

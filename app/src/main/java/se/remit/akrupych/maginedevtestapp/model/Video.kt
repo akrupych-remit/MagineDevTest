@@ -1,4 +1,4 @@
-package se.remit.akrupych.magindevtestapp.model
+package se.remit.akrupych.maginedevtestapp.model
 
 import com.google.gson.annotations.SerializedName
 

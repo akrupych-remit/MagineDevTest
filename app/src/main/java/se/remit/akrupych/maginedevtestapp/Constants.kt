@@ -1,4 +1,4 @@
-package se.remit.akrupych.magindevtestapp
+package se.remit.akrupych.maginedevtestapp
 
 /**
  * Contains Application-wide constants
@@ -6,7 +6,7 @@ package se.remit.akrupych.magindevtestapp
 object Constants {
 
     /**
-     * Base url for Magin API
+     * Base url for Magine API
      */
     const val BASE_URL = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/"
 

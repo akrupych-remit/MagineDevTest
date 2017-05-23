@@ -1,4 +1,4 @@
-package se.remit.akrupych.magindevtestapp;
+package se.remit.akrupych.maginedevtestapp;
 
 import org.junit.Test;
 
