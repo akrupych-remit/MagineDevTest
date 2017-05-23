@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(MagineAPI::class.java)
 
-    private lateinit var errorSnackbar: Snackbar
+    private var errorSnackbar: Snackbar? = null
 
     /**
      * Called when the screen is created to get the view and setup everything
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
-                    errorSnackbar.dismiss()
+                    errorSnackbar?.dismiss()
                     loadingIndicator.visibility = View.VISIBLE
                 }
                 .doFinally { loadingIndicator.visibility = View.GONE }
@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
                         { error ->
                             error.printStackTrace()
                             errorSnackbar = Snackbar.make(contentView, R.string.loading_failed, Snackbar.LENGTH_INDEFINITE)
-                            errorSnackbar.setAction(R.string.retry, { requestVideos() })
-                            errorSnackbar.show()
+                            errorSnackbar?.setAction(R.string.retry, { requestVideos() })
+                            errorSnackbar?.show()
                         }
                 )
     }
