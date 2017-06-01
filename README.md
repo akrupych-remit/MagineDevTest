@@ -5,5 +5,3 @@ Hello! I'm Andriy Krupych and here go my explantions about things used in this d
 - Glide stands for image loading.
 
 I could have done the project smaller, but I've tried to show up what would I use in the real-life project.
-
-Dagger support is also there, but it requires manipulations after each run, so I left it behind.
