@@ -1,5 +1,6 @@
 package se.remit.akrupych.maginedevtestapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -82,7 +83,16 @@ class MainActivity : AppCompatActivity() {
      */
     private fun showVideos(response: CategoriesResponse) {
         val allVideos: List<Video> = response.categories.flatMap { it.videos }
-        videosList.adapter = VideosAdapter(allVideos, this)
+        val adapter = VideosAdapter(allVideos, this)
+        adapter.getItemClicksObservable().subscribe({ playVideo(it) })
+        videosList.adapter = adapter
+    }
+
+    /**
+     * Show video playback screen
+     */
+    private fun playVideo(video: Video) {
+        startActivity(Intent(this, VideoActivity::class.java).putExtra(VideoActivity.EXTRA_VIDEO_PATH, video.sources[0]))
     }
 
 }
